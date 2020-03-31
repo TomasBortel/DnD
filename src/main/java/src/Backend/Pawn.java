@@ -1,12 +1,13 @@
-package src.Backend;
+package DnD.Backend;
 
 public class Pawn{
     private int HP;
     private int AC;
     private int speed;
-    private int[] attributes = new int[6];
+    private int[] attributes = new int[]{1,2,3,4,5,6};
     private int[] attr_bonus = new int[6];
     private int[] save_bonus = new int[6];
+    private Alignment alignment;
 
     public Pawn(){
         generate_attr_bonus();
@@ -54,6 +55,22 @@ public class Pawn{
         generate_attr_bonus();
     }
 
+    public int[] get_attr_bonuses(){
+        return attr_bonus;
+    }
+
+    public int get_attr_bonus(int index){
+        return attr_bonus[index];
+    }
+
+    public int[] get_save_bonuses(){
+        return save_bonus;
+    }
+
+    public int get_save_bonus(int index){
+        return save_bonus[index];
+    }
+
     public void generate_attr_bonus(){
         for (int i = 0; i < attributes.length; i++){
             final int attr_val = attributes[i];
@@ -70,7 +87,7 @@ public class Pawn{
     }
 
     public static void main(final String[] args){
-        
+        Pawn pawn = new Pawn();
     }
 
 }
