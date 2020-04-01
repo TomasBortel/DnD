@@ -6,7 +6,8 @@ public class Monster extends Pawn{
     private final MonsterType type;
 
     public Monster(String name,PawnSize size, MonsterType type, Alignment alignment, int AC, int HP, int reg_speed, int dig_speed, int fly_speed, int swim_speed,
-                    int climb_speed, int str, int dex, int con, int it, int wis, int cha, HashMap<Attributes, Integer> saves_map){
+                    int climb_speed, int str, int dex, int con, int it, int wis, int cha, HashMap<Attributes, Integer> saves_map,
+                    HashMap<Skills, Integer> skills_map){
         this.set_name(name);
         this.set_size(size);
         this.type = type;
@@ -43,6 +44,21 @@ public class Monster extends Pawn{
             }
         }
 
+    }
+
+    /**
+     * TODO: test pls
+     */
+    public void generate_skill_bonus(HashMap<Skills, Integer> skills_map){
+        for(int i = 0; i < this.get_skill_bonuses().length; i++){
+            Skills skill_from_index = Skills.get_skill_by_index(i);
+            if(skills_map.containsKey(skill_from_index)){
+                this.set_skill_bonus(i, skills_map.get(skill_from_index));
+            }
+            else{
+                this.set_skill_bonus(i, this.get_attr_bonus(skill_from_index.get_attribute().get_index()));
+            }
+        }
     }
 
 }
