@@ -14,7 +14,7 @@ public abstract class Pawn{
      * 3 - SWIMMING
      * 4 - CLIMBING
      */
-    private int[] speed = new int[5];
+    private int[] speed = new int[]{0, 0, 0, 0, 0};
 
     /**
      * Attributes, attribute  and save bonuses are represented by arrays, where each index always represents one attribute.
@@ -25,7 +25,7 @@ public abstract class Pawn{
      * 4 - WISDOM
      * 5 - CHARISMA
      */
-    private int[] attributes = new int[]{1,2,3,4,5,6};
+    private int[] attributes = new int[6];
     private int[] attr_bonus = new int[6];
     private int[] save_bonus = new int[6];
 
@@ -110,6 +110,10 @@ public abstract class Pawn{
     public void set_speed(int index, int value){
         this.speed[index] = value;
     }
+    
+    public void set_all_speeds(int reg_speed,int dig_speed,int fly_speed,int swim_speed,int climb_speed){
+        this.speed = new int[]{reg_speed, dig_speed, fly_speed, swim_speed, climb_speed};
+    }
 
     public int[] get_attributes(){
         return this.attributes;
@@ -143,6 +147,9 @@ public abstract class Pawn{
 
     public int get_save_bonus(int index){
         return save_bonus[index];
+    }
+    public void set_save_bonus(int index, int new_value){
+        save_bonus[index] = new_value;
     }
 
     public Alignment get_alignment(){
