@@ -1,4 +1,5 @@
-package DnD.Backend;
+package src.Backend;
+
 
 public enum Alignment{
     LAWFUL_GOOD,
@@ -11,6 +12,7 @@ public enum Alignment{
     CHAOTIC_NEUTRAL,
     CHATORIC_EVIL;
 
+    @Override
     public String toString(){
         return this.name().toLowerCase().replace("_", " ");
     }

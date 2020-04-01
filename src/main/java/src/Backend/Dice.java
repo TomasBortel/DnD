@@ -1,4 +1,4 @@
-package DnD.Backend;
+package src.Backend;
 
 import java.util.Arrays;
 import java.util.Random;
