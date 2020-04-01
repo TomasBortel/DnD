@@ -49,4 +49,8 @@ public enum Skills{
         }
         return null;
     }
+
+    public String toString(){
+        return this.name().toLowerCase().replace("_", " ");
+    }
 }

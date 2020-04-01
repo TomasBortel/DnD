@@ -2,6 +2,7 @@ package src.Backend;
 
 public abstract class Pawn{
     private String name;
+    private int HP_max;
     private int HP;
     private int HP_temp = 0;
     private int AC;
@@ -62,6 +63,7 @@ public abstract class Pawn{
      * 17 - Performance
      */
     private int[] skill_bonus = new int[18];
+    private Languages[] languages;
 
     public String get_name(){
         return this.name;
@@ -69,6 +71,18 @@ public abstract class Pawn{
 
     public void set_name(String new_name){
         this.name = new_name;
+    }
+
+    public int get_HP_max(){
+        return this.HP_max;
+    }
+
+    public void set_HP_max(int num){
+        this.HP_max = num;
+    }
+
+    public void add_HP_max(int num){
+        this.HP_max += num;
     }
 
     public int get_HP(){
@@ -83,12 +97,20 @@ public abstract class Pawn{
         this.HP += how_much;
     }
 
+    public void reset_HP(){
+        this.HP = this.HP_max;
+    }
+
     public int get_HP_temp(){
         return this.HP_temp;
     }
 
     public void set_HP_temp(int new_value){
         this.HP_temp = new_value;
+    }
+
+    public void reset_HP_temp(){
+        this.HP_temp = 0;
     }
 
     public int get_AC(){
@@ -193,6 +215,29 @@ public abstract class Pawn{
 
     public void set_skill_bonus(int index, int value){
         this.skill_bonus[index] = value;
+    }
+
+    public Languages[] get_languages(){
+        return this.languages;
+    }
+
+    /**
+     * TODO:TEST
+     * @param language object from Languages enum that we seek (eg. does this pawn know THIS language?)
+     * @return if the pawn has the language in its wheelhouse, returns true. otherwise, returns false.
+     */
+    public boolean knows_language(Languages language){
+        Languages[] languages = get_languages();
+        for(Languages lang : languages){
+            if(lang.equals(language)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void set_languages(Languages[] languages){
+        this.languages = languages;
     }
 
 }
