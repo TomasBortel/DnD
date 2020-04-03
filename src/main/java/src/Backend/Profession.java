@@ -17,10 +17,13 @@ public class Profession{
     private Attributes[] save_bonus;
     private Skills[] possible_skill_profs;
     private int skill_profs_count;
+    //TODO:starting gear
+    private Attributes casting_attribute;
+    //TODO: implement casting system? Wizard / Cleric,Paladin,Druid / Sorc,Lock,Bard systems?
 
     public Profession(String name, String desc, int hit_dice, ArmorType[] armor_profs, GeneralWeaponType[] gen_weapon_profs,
                         SpecificWeaponType[]spec_weapon_profs, Tools[] tool_profs, Attributes[] save_bonus, Skills[] possible_skill_profs,
-                        int skill_profs_count){
+                        int skill_profs_count, Attributes casting_attribute){
 
         this.name = name;
         this.description = desc;
@@ -31,6 +34,7 @@ public class Profession{
         this.save_bonus = save_bonus;
         this.possible_skill_profs = possible_skill_profs;
         this.skill_profs_count = skill_profs_count;
+        this.casting_attribute = casting_attribute;
     }
 
     private SpecificWeaponType[] get_all_weapon_profs(GeneralWeaponType[] gen_weapon_profs, SpecificWeaponType[] spec_weapon_profs){
@@ -78,6 +82,10 @@ public class Profession{
 
     public int get_skill_profs_count(){
         return this.skill_profs_count;
+    }
+
+    public Attributes get_casting_attribute(){
+        return this.casting_attribute;
     }
     
 
