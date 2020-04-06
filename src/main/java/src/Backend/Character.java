@@ -5,17 +5,19 @@ import java.util.HashMap;
 public class Character extends Pawn{
     private Profession profession;
     private Race race;
+    private Backround backround;
     private int level = 1;
     private int exp_total = 0;
     private boolean inspiration = false;
     private int prof_bonus;
     private boolean can_level_up;
 
-    public Character(String name,Profession profession,Race race, Alignment alignment, int str, int dex, int con, int it, int wis, int cha, int AC){
+    public Character(String name,Profession profession,Race race,Backround backround, Alignment alignment, int str, int dex, int con, int it,
+                    int wis, int cha, int AC){
         this.set_name(name);
         this.profession = profession;
         this.race = race; //is subrace a race or something else?
-        //TODO: Backround
+        this.backround = backround;
         this.set_alignment(alignment);
         this.set_attributes(str, dex, con, it, wis, cha);
         this.add_racial_bonuses();
@@ -58,6 +60,10 @@ public class Character extends Pawn{
 
     public int get_prof_bonus(){
         return this.prof_bonus;
+    }
+
+    public boolean get_can_level_up(){
+        return this.can_level_up;
     }
 
     public void generate_prof_bonus(){
